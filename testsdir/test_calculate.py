@@ -2,6 +2,7 @@ import unittest
 from calculate import calc
 import math
 
+
 class TestCalc(unittest.TestCase):
 
     def test_circle_area(self):
@@ -25,6 +26,7 @@ class TestCalc(unittest.TestCase):
     def test_invalid_size(self):
         with self.assertRaises(TypeError):
             calc('circle', 'area', [3, 4])
+
 
 if __name__ == '__main__':
     unittest.main()

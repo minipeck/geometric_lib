@@ -1,6 +1,7 @@
 import unittest
 from square import area, perimeter
 
+
 class TestSquareFunctions(unittest.TestCase):
 
     def test_area_positive(self):
@@ -22,6 +23,7 @@ class TestSquareFunctions(unittest.TestCase):
     def test_perimeter_negative(self):
         with self.assertRaises(ValueError):
             perimeter(-5)
+
 
 if __name__ == "__main__":
     unittest.main()
