@@ -24,7 +24,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Display name, group, and GitHub username
-      run: echo "Name: ${{ env.FULL_NAME }}, Group: ${{ env.GROUP_NUMBER }}, GitHub Username: ${{ github.actor }}"
+      run: |
+       echo "Name: ${{ env.FULL_NAME }}, Group: ${{ env.GROUP_NUMBER }}, GitHub Username: ${{ github.actor }}"
 
     - name: Set up Python 3.13
       uses: actions/setup-python@v4
