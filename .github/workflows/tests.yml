@@ -1,0 +1,45 @@
+name: Run Tests and Lint
+
+on:
+  push:
+    branches:
+      - master
+      - release/*
+  pull_request:
+    branches:
+      - master
+      - release/*
+      - develop
+
+jobs:
+  test_and_lint:
+    runs-on: ubuntu-latest  # Задача выполняется на последней версии Ubuntu
+
+    env:  # Задаем переменные среды здесь
+      FULL_NAME: "Рахматуллина София Эмилевна"
+      GROUP_NUMBER: "М3112"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Display name, group, and GitHub username
+      run: |
+       echo "Name: ${{ env.FULL_NAME }}, Group: ${{ env.GROUP_NUMBER }}, GitHub Username: ${{ github.actor }}"
+
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run tests with unittest
+      run: |
+        python -m unittest discover -s testsdir -p "test_*.py"
+
+    - name: Lint Code with flake8
+      run: |
+        flake8 .
